@@ -1,0 +1,70 @@
+{
+  "OP": {
+    "MPT": "mpt",
+    "ATOM": "atom",
+    "MYTEL": "mytel",
+    "U9": "u9",
+    "MEC": "mec",
+    "OOREDOO": "u9"
+  },
+  "CAT": {
+    "DATA": "data",
+    "VOICE": "voice",
+    "MAIN": "main"
+  },
+  "STEP": {
+    "IDLE": "IDLE",
+    "SELECTING_CATEGORY": "SELECTING_CATEGORY",
+    "SELECTING_PLAN": "SELECTING_PLAN",
+    "AWAITING_MAIN_BILL_AMOUNT": "AWAITING_MAIN_BILL_AMOUNT",
+    "AWAITING_PAYMENT_METHOD": "AWAITING_PAYMENT_METHOD",
+    "CHOOSE_PAY_METHOD": "CHOOSE_PAY_METHOD",
+    "AWAITING_PAYMENT_SS": "AWAITING_PAYMENT_SS",
+    "AWAITING_PAYMENT_TEXT_METHOD": "AWAITING_PAYMENT_TEXT_METHOD",
+    "AWAITING_ACCOUNT_NAME": "AWAITING_ACCOUNT_NAME",
+    "AWAITING_TRANSACTION_ID": "AWAITING_TRANSACTION_ID",
+    "REPLY_MODE": "REPLY_MODE",
+    "WAITING_BROADCAST_DATA": "WAITING_BROADCAST_DATA",
+    "ADD_PLAN_OP": "ADD_PLAN_OP",
+    "ADD_PLAN_CAT": "ADD_PLAN_CAT",
+    "ADD_PLAN_NAME": "ADD_PLAN_NAME",
+    "ADD_PLAN_PRICE": "ADD_PLAN_PRICE",
+    "EDIT_PLAN_SELECT": "EDIT_PLAN_SELECT",
+    "EDIT_PLAN_NAME": "EDIT_PLAN_NAME",
+    "EDIT_PLAN_PRICE": "EDIT_PLAN_PRICE",
+    "DELETE_PLAN_SELECT": "DELETE_PLAN_SELECT",
+    "SET_GLOBAL_PERCENT": "SET_GLOBAL_PERCENT",
+    "WAITING_MPT_DISC": "WAITING_MPT_DISC",
+    "WAITING_ATOM_DISC": "WAITING_ATOM_DISC",
+    "WAITING_OOREDOO_DISC": "WAITING_OOREDOO_DISC",
+    "WAITING_MYTEL_DISC": "WAITING_MYTEL_DISC"
+  },
+  "STATUS": {
+    "ACTIVE": "active",
+    "BLOCKED": "blocked",
+    "PENDING": "pending",
+    "COMPLETED": "completed",
+    "REJECTED": "rejected"
+  },
+  "LABELS": {
+    "data": "📦 Data Plan",
+    "voice": "📞 Voice Plan",
+    "main": "💰 Main Bill",
+    "u9": "Ooredoo/U9",
+    "ooredoo": "Ooredoo/U9"
+  },
+  "DB_FIELDS": {
+    "GLOBAL_DISC": "globalDisc",
+    "MPT_DISC": "mptDisc",
+    "ATOM_DISC": "atomDisc",
+    "OOREDOO_DISC": "u9",
+    "MYTEL_DISC": "mytelDisc"
+  },
+  "ACTION": {
+    "MANAGE_PLANS": "manage_plans",
+    "ADD_PLAN_START": "add_plan_start",
+    "EDIT_PLAN_START": "edit_plan_start",
+    "DELETE_PLAN_START": "delete_plan_start",
+    "BACK_TO_ADMIN": "back_to_admin"
+  }
+}
