@@ -13,7 +13,7 @@ This project demonstrates the **Mosaic Synergy**—combining the flexibility of 
 ## 🧭 The Mosaic Compass (Directory Structure)
 To maintain clarity and scalability, the project strictly follows a decoupled architectural blueprint:
 
-\`\`\`text
+```text
 myan-bot-ultimate/
 │
 ├── 🧠 1. Brain Layer (Node.js - Command Center)
@@ -36,7 +36,7 @@ myan-bot-ultimate/
 └── 🗄️ 4. Vault Layer (Data Persistence)
     └── data/
         └── local_db.json # Shared Storage (LowDB/JSON)
-\`\`\`
+```
 
 ## 🛠️ Tech Stack
 *   **Runtime:** Node.js (v20+)
