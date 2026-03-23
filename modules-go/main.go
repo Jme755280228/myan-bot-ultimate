@@ -6,45 +6,60 @@ import (
 	"os"
 )
 
-type DBStructure struct {
-	Nodes map[string]interface{} `json:"nodes"`
+// Node က ပို့လိုက်တဲ့ Data ပုံစံကို ဖမ်းဖို့ Struct (သံချည်ကွင်း)
+type NodeRequest struct {
+	Command string                 `json:"command"`
+	Payload map[string]interface{} `json:"payload"`
+}
+
+// Node ကို ပြန်ပို့မယ့် Data ပုံစံ
+type NodeResponse struct {
+	Status  string      `json:"status"`
+	Message string      `json:"message"`
+	Data    interface{} `json:"data,omitempty"`
 }
 
 func main() {
-	fmt.Println("🔍 [Go Muscle] Reading Node's Mosaic Data...")
-
-	// လမ်းကြောင်းကို root ကနေရော၊ modules-go ထဲကနေပါ ရှာနိုင်အောင် လုပ်မယ်
-	paths := []string{"data/local_db.json", "../data/local_db.json"}
-	var file []byte
-	var err error
-
-	for _, p := range paths {
-		file, err = os.ReadFile(p)
-		if err == nil {
-			break
-		}
-	}
-
-	if err != nil {
-		fmt.Println("❌ Error: Could not find local_db.json")
+	// 1. Argument ပါမပါ စစ်မယ်
+	if len(os.Args) < 2 {
+		sendError("No input data provided")
 		return
 	}
 
-	var db DBStructure
-	json.Unmarshal(file, &db)
+	rawInput := os.Args[1]
+	var req NodeRequest
 
-	orderCount := 0
-	for path := range db.Nodes {
-		if len(path) > 7 && path[:7] == "orders/" {
-			orderCount++
-		}
+	// 2. Node က ပို့တဲ့ JSON ကို Go နားလည်အောင် ဖြည်မယ် (Unmarshal)
+	err := json.Unmarshal([]byte(rawInput), &req)
+	if err != nil {
+		sendError(fmt.Sprintf("Invalid JSON input: %v", err))
+		return
 	}
 
-	fmt.Printf("📊 Total Orders found by Go: %d\n", orderCount)
-    
-	if orderCount > 0 {
-		fmt.Println("🚀 Synergy Level: EXCELLENT. Ready for Production Logic.")
-	} else {
-		fmt.Println("⚠️  Synergy Connected, but no orders found in DB.")
+	// 3. Command Dispatcher (ဘယ်အလုပ် ခိုင်းတာလဲ စစ်မယ်)
+	switch req.Command {
+	case "HEALTH_CHECK":
+		sendSuccess("Muscle is perfectly healthy and ready!", nil)
+		
+	case "CALC_SYNERGY":
+		// ဥပမာ: Payload ထဲက data ကိုယူပြီး တွက်မယ်
+		result := fmt.Sprintf("Processed payload from Node: %v", req.Payload)
+		sendSuccess("Calculation done", result)
+
+	default:
+		sendError(fmt.Sprintf("Unknown command: %s", req.Command))
 	}
+}
+
+// အောက်က နှစ်ခုက Node ဆီကို JSON အဖြစ် ပြန်ပို့ပေးမယ့် Helper function တွေပါ
+func sendSuccess(msg string, data interface{}) {
+	res := NodeResponse{Status: "success", Message: msg, Data: data}
+	out, _ := json.Marshal(res)
+	fmt.Println(string(out)) // Node က stdout ကနေ ပြန်ဖတ်လိမ့်မယ်
+}
+
+func sendError(errMsg string) {
+	res := NodeResponse{Status: "error", Message: errMsg}
+	out, _ := json.Marshal(res)
+	fmt.Println(string(out)) // Error ကိုလည်း JSON အဖြစ်ပဲ ပြန်ပို့မယ်
 }
